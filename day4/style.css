@@ -1,0 +1,120 @@
+/* 1. Colours live in variables, so a theme is just a different set of values */
+:root {
+  --bg: #f4f6f8;
+  --card-bg: #ffffff;
+  --text: #222222;
+  --muted: #555555;
+  --border: #cccccc;
+  --accent: #0ba184;
+  --accent-hover: #088a70;
+  --button-text: #ffffff;
+  --warning: #d35400;   /* orange */
+  --danger: #c0392b;    /* red */
+}
+
+/* 2. Dark theme: only the variables change, no other rules needed */
+body.dark {
+  --bg: #121417;
+  --card-bg: #1e2227;
+  --text: #e8eaed;
+  --muted: #a0a6ad;
+  --border: #3a4048;
+  --accent: #14b896;
+  --accent-hover: #3fd0b0;
+  --button-text: #0b1210;
+  --warning: #ff9f43;   /* lighter orange, readable on dark */
+  --danger: #ff6b6b;    /* lighter red, readable on dark */
+}
+
+/* 3. Layout and components (all colours come from the variables) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card {
+  width: 100%;
+  max-width: 560px;
+  background-color: var(--card-bg);
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+h1 {
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+#char-count,
+#word-count {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+/* 4. Character counter states (over comes last so it wins over warning) */
+.warning {
+  color: var(--warning);
+}
+
+.over {
+  color: var(--danger);
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+button {
+  background-color: var(--accent);
+  color: var(--button-text);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--accent-hover);
+}
